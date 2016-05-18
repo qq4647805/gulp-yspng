@@ -1,6 +1,8 @@
 # gulp-yspng
 ### gulp插件 压缩png图片
 
+[主页](https://github.com/qq4647805/gulp-yspng)
+
 > 参考 [node-pngquant-native](https://www.npmjs.com/package/node-pngquant-native)
 
 ```javascript
