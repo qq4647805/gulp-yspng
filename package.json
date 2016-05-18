@@ -1,6 +1,6 @@
 {
   "name": "gulp-yspng",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "压缩png",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/qq4647805/gulp-yspng"
   },
-  "homepage": "https://github.com/qq4647805/gulp-yspng",
+  "homepage": "https://qq4647805.github.io/gulp-yspng/",
   "keywords": [
     "png"
   ],
