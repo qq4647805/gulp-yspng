@@ -15,13 +15,15 @@ function yspng(opt) {
             // 返回空文件
             cb(null, file);
         }
-        if (file.isBuffer() && path.extname(file.path) == '.png') {
-            var buffer = new Buffer(file.contents);
-            file.contents = pngquant.compress(buffer, n_opt);
+        if (file.isBuffer()) {
+            if (path.extname(file.path) == '.png') {
+                var buffer = new Buffer(file.contents);
+                file.contents = pngquant.compress(buffer, n_opt);
+            }
         }
         if (file.isStream()) {
             cb(null, file);
-            file.contents = file.contents.pipe(yspng.stream(n_opt));
+            file.contents.pipe(yspng.stream(n_opt));
         }
         cb(null, file);
     });
@@ -33,4 +35,4 @@ yspng.stream = function(opt) {
     });
     return stream;
 }
-module.exports = yspng;
+module.exports = yspng;;
