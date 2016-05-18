@@ -1,0 +1,6 @@
+{
+  "name": "Gulp-yspng",
+  "tagline": "",
+  "body": "# gulp-yspng\r\n### gulp插件 压缩png图片\r\n\r\n####[github : https://github.com/qq4647805/gulp-yspng](https://github.com/qq4647805/gulp-yspng)\r\n\r\n> 参考 [node-pngquant-native](https://www.npmjs.com/package/node-pngquant-native)\r\n\r\n```javascript\r\nvar yspng = require('gulp-yspng');\r\n\r\ngulp.task('yspng', function() {\r\n  gulp.src([\"images/**/*.png\"])\r\n    .pipe(yspng({\r\n       speed: 3, //1 ~ 11\r\n      // quality: [40, 60]\r\n    }))\r\n    .pipe(gulp.dest(\"dist/images\"))\r\n});\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
