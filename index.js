@@ -2,11 +2,7 @@ var through = require('through2');
 var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
 var pngquant = require('node-pngquant-native');
-
-function fnStream() {
-    var stream = through();
-    return stream;
-}
+var path = require('path');
 
 function yspng(opt) {
     // speed: 11, //1 ~ 11
@@ -19,17 +15,22 @@ function yspng(opt) {
             // 返回空文件
             cb(null, file);
         }
-        if (file.isBuffer()) {
+        if (file.isBuffer() && path.extname(file.path) == '.png') {
             var buffer = new Buffer(file.contents);
             file.contents = pngquant.compress(buffer, n_opt);
         }
         if (file.isStream()) {
             cb(null, file);
-            file.contents = file.contents.pipe(fnStream());
+            file.contents = file.contents.pipe(yspng.stream(n_opt));
         }
         cb(null, file);
     });
 };
-
-// 暴露（export）插件主函数
+yspng.stream = function(opt) {
+    var n_opt = opt || {};
+    var stream = through(function(buf, enc, next) {
+        next(null, pngquant.compress(buf, n_opt))
+    });
+    return stream;
+}
 module.exports = yspng;
