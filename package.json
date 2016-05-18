@@ -10,7 +10,7 @@
     "png"
   ],
   "author": "聋小熊",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "node-pngquant-native": "^1.0.4"
   }
