@@ -14,16 +14,20 @@ function yspng(opt) {
         if (file.isNull()) {
             // 返回空文件
             cb(null, file);
+            return;
         }
         if (file.isBuffer()) {
             if (path.extname(file.path) == '.png') {
                 var buffer = new Buffer(file.contents);
                 file.contents = pngquant.compress(buffer, n_opt);
+                cb(null, file);
+                return;
             }
         }
         if (file.isStream()) {
-            cb(null, file);
             file.contents.pipe(yspng.stream(n_opt));
+            cb(null, file);
+            return;
         }
         cb(null, file);
     });
